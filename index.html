@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary Error</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" class="logo" alt="Gmail Logo">
+        Temporary Error !
+    </div>
+
+    <div class="error-box">
+        <div id="error-message">
+            <h2>Oops! Something went wrong.</h2>
+            <p>We're sorry, but something went wrong on our end. Please try again in a few minutes.</p>
+
+            <h3>Possible Causes:</h3>
+            <ul>
+                <li>Our servers are having a bad day 😞</li>
+                <li>Your internet connection might be unstable</li>
+                <li>Too many requests at the same time</li>
+            </ul>
+
+            <h3>What You Can Do:</h3>
+            <p>Try the following:</p>
+            <ul>
+                <li>Refresh this page</li>
+                <li>Try opening Gmail on a different browser</li>
+                <li>Please visit the <a href="https://support.google.com/mail/">Help Center</a></li>
+            </ul>
+
+            <a href="#" class="btn" onclick="triggerGlitch()">Try Again</a>
+            <a href="#" class="btn" onclick="triggerGlitch()">Sign Out</a>
+        </div>
+
+        <!-- ✅ 進度條區塊保留 -->
+        <div id="recovery-box" style="display:none; margin-top:20px;">
+            <div style="background:#ddd; border-radius:4px; overflow:hidden;">
+                <div id="progress-bar" style="height:20px; width:0%; background:#1a73e8;"></div>
+            </div>
+            <p id="countdown-text" style="margin-top:10px; font-weight:bold;">系統將在 5 秒後自動重新載入…</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        ©2025 Google - <a href="#">Home</a> - <a href="#">Privacy Policy</a> - <a href="#">Program Policies</a> - <a href="#">Terms of Use</a> - <a href="#">Google Home</a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

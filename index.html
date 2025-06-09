@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Temporary Error</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<canvas id="matrix-canvas"></canvas>
+<!-- 一開始就凍結 -->
+<div class="freeze"></div>
 
 <div class="container">
     <div class="header">
@@ -40,7 +40,6 @@
             <a href="#" class="btn" onclick="triggerGlitch()">Sign Out</a>
         </div>
 
-        <!-- ✅ 進度條區塊保留 -->
         <div id="recovery-box" style="display:none; margin-top:20px;">
             <div style="background:#ddd; border-radius:4px; overflow:hidden;">
                 <div id="progress-bar" style="height:20px; width:0%; background:#1a73e8;"></div>
@@ -55,7 +54,5 @@
 </div>
 
 <script src="script.js"></script>
-
-
 </body>
 </html>

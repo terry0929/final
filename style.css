@@ -4,6 +4,33 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    animation: subtle-shake 2s infinite;
+}
+
+@keyframes subtle-shake {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(0.3px, -0.3px); }
+    50% { transform: translate(-0.3px, 0.3px); }
+    75% { transform: translate(0.2px, -0.2px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+@keyframes shake-once {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-2px, 2px); }
+    20% { transform: translate(2px, -2px); }
+    30% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    50% { transform: translate(-1px, 1px); }
+    60% { transform: translate(1px, -1px); }
+    70% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    90% { transform: translate(0px, 0px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+.shake {
+    animation: shake-once 0.5s ease-in-out;
 }
 
 .container {
@@ -31,17 +58,6 @@ body {
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 4px;
-}
-
-.error-box h2 {
-    animation: flicker 1s infinite alternate;
-    filter: blur(0.7px);
-}
-
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.4; }
-    100% { opacity: 1; }
 }
 
 .footer {
@@ -76,53 +92,20 @@ a:hover {
     background-color: #0f5bb5;
 }
 
-#matrix-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background: black;
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-.container, .footer {
-    position: relative;
-    z-index: 10;
-}
-
 .freeze {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(0px);
-    animation: freezeAnim 2.4s ease-in-out infinite alternate; /* 時間加長！ */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(1px);
+    animation: freezeAnim 2.4s ease-in-out infinite alternate;
     z-index: 9999;
     pointer-events: none;
 }
 
 @keyframes freezeAnim {
-    0% {
-        backdrop-filter: blur(0px);
-        background: rgba(255, 255, 255, 0.03);
-    }
-    50% {
-        backdrop-filter: blur(0.8px); /* 降 blur 強度 */
-        background: rgba(255, 255, 255, 0.06);
-    }
-    100% {
-        backdrop-filter: blur(1.2px);
-        background: rgba(255, 255, 255, 0.09);
-    }
+    0% { backdrop-filter: blur(0px); background: rgba(255, 255, 255, 0.05); }
+    50% { backdrop-filter: blur(1px); background: rgba(255, 255, 255, 0.08); }
+    100% { backdrop-filter: blur(1.5px); background: rgba(255, 255, 255, 0.1); }
 }
-
-
-
-
-
-
-

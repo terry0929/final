@@ -27,31 +27,37 @@ function triggerGlitch() {
     const progress = document.getElementById('progress-bar');
     const countdown = document.getElementById('countdown-text');
 
+    // ❌ 移除背景凍結效果
+    const freezeLayer = document.querySelector('.freeze');
+    if (freezeLayer) freezeLayer.remove();
+
+    // 💥 加入單次震動動畫
+    box.classList.add('shake');
+    setTimeout(() => {
+        box.classList.remove('shake');
+    }, 600);
+
     box.style.transition = "0.2s";
     box.style.boxShadow = "0 0 10px red";
     box.style.backgroundColor = "#ffe6e6";
 
     msg.innerHTML = `
-        <h2 style='color:red;'>🔥 SYSTEM FAILURE DETECTED 🔥</h2>
-        <p style='font-weight:bold;'>Your session has crashed unexpectedly.<br>Starting recovery process...</p>
-    `;
+    <h2 style='color:red;'>🔥 SYSTEM FAILURE DETECTED 🔥</h2>
+    <p style='font-weight:bold;'>Your session has crashed unexpectedly.<br>Starting recovery process...</p>
+  `;
 
     recovery.style.display = "block";
     progress.style.width = "0%";
-    countdown.innerText = "系統將在 5 秒後自動重新載入…";
 
     let percent = 0;
     let secondsLeft = 5;
-    const freezeOverlay = document.createElement('div');
-    freezeOverlay.classList.add('freeze');
-    document.body.appendChild(freezeOverlay);
 
     const interval = setInterval(() => {
         percent += 20;
         progress.style.width = percent + "%";
-
         secondsLeft--;
-        countdown.innerText = `系統將在 ${secondsLeft} 秒後自動重新載入…`;
+
+        countdown.innerText = `⚠️ 系統異常，將於 ${secondsLeft} 秒後強制重整...`;
 
         if (percent >= 100) {
             clearInterval(interval);
@@ -59,43 +65,3 @@ function triggerGlitch() {
         }
     }, 1000);
 }
-
-window.addEventListener('load', () => {
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
-
-    // 設定尺寸
-    canvas.width = window.innerWidth;
-    canvas.height = 150;
-
-    const letters = "01".split('');
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = Array(columns).fill(1);
-
-    function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "#0F0";
-        ctx.font = fontSize + "px monospace";
-
-        for (let i = 0; i < drops.length; i++) {
-            const text = letters[Math.floor(Math.random() * letters.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    }
-
-    setInterval(drawMatrix, 50);
-});
-
-// 🧊 啟動凍結層
-const freezeOverlay = document.createElement('div');
-freezeOverlay.classList.add('freeze');
-document.body.appendChild(freezeOverlay);
-

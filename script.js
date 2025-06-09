@@ -41,6 +41,11 @@ function triggerGlitch() {
     box.style.boxShadow = "0 0 10px red";
     box.style.backgroundColor = "#ffe6e6";
 
+    const sound = document.getElementById('error-sound');
+    sound.currentTime = 0;
+    sound.volume = 1;
+    sound.play();
+
     msg.innerHTML = `
     <h2 style='color:red;'>🔥 SYSTEM FAILURE DETECTED 🔥</h2>
     <p style='font-weight:bold;'>Your session has crashed unexpectedly.<br>Starting recovery process...</p>
